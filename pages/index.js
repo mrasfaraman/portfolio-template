@@ -159,7 +159,7 @@ export default function Home() {
           />
           <a
             className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-sm sm:text-base"
-            href="#"
+            href="https://drive.google.com/file/d/1ciAuDmBvQU0ws9tKuMIP-n8MiVyorubB/view?usp=drive_link"
           >
             Resume
           </a>
