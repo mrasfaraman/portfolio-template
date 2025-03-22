@@ -64,6 +64,8 @@ export default function Home() {
     { name: "Services", id: "services" },
     { name: "Tools & Technologies", id: "tools" },
     { name: "Experience", id: "experience" },
+    { name: "Certifications", id: "certifications" },
+    { name: "Education", id: "education" },
   ];
 
   // Handle scroll to update active section
@@ -77,7 +79,7 @@ export default function Home() {
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (
-            scrollPosition >= offsetTop - 100 && // Adjusted for better detection
+            scrollPosition >= offsetTop - 100 &&
             scrollPosition < offsetTop + offsetHeight - 100
           ) {
             newActiveSection = section.id;
@@ -86,7 +88,6 @@ export default function Home() {
         }
       }
 
-      // Update active section only if it has changed
       if (newActiveSection !== activeSection) {
         setActiveSection(newActiveSection);
       }
@@ -118,7 +119,7 @@ export default function Home() {
       </Head>
 
       {/* Fixed Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50 dark:bg-gray-800 shadow-md py-4 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 flex justify-between items-center dark:text-white">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50 dark:bg-gray-900 shadow-md py-4 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 flex justify-between items-center dark:text-white">
         <a href="#home" onClick={() => scrollToSection("home")}>
           <h1 className="font-extrabold text-xl sm:text-2xl bg-gradient-to-r from-cyan-500 to-teal-500 bg-clip-text text-transparent drop-shadow-md hover:drop-shadow-lg transition-all duration-300">
             Hazzy M
@@ -136,14 +137,14 @@ export default function Home() {
                     e.preventDefault();
                     scrollToSection(section.id);
                   }}
-                  className={`text-sm lg:text-lg cursor-pointer hover:text-teal-600 transition-colors ${
-                    activeSection === section.id ? "text-teal-600" : ""
+                  className={`text-sm lg:text-lg cursor-pointer hover:text-teal-400 transition-colors ${
+                    activeSection === section.id ? "text-teal-400" : "text-gray-800 dark:text-gray-100"
                   }`}
                 >
                   {section.name}
                 </a>
                 {activeSection === section.id && (
-                  <div className="absolute bottom-[-4px] left-0 right-0 h-1 bg-teal-600 rounded-full" />
+                  <div className="absolute bottom-[-4px] left-0 right-0 h-1 bg-teal-400 rounded-full" />
                 )}
               </li>
             ))}
@@ -154,7 +155,7 @@ export default function Home() {
         <div className="flex items-center">
           <BsFillMoonStarsFill
             onClick={() => setDarkMode(!darkMode)}
-            className="cursor-pointer text-xl sm:text-2xl mr-3 sm:mr-4"
+            className="cursor-pointer text-xl sm:text-2xl mr-3 sm:mr-4 text-gray-800 dark:text-gray-100"
           />
           <a
             className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-sm sm:text-base"
@@ -166,9 +167,9 @@ export default function Home() {
           <div className="md:hidden ml-3">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? (
-                <FaTimes className="text-2xl" />
+                <FaTimes className="text-2xl text-gray-800 dark:text-gray-100" />
               ) : (
-                <FaBars className="text-2xl" />
+                <FaBars className="text-2xl text-gray-800 dark:text-gray-100" />
               )}
             </button>
           </div>
@@ -176,7 +177,7 @@ export default function Home() {
 
         {/* Mobile Menu (Slider) */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-gray-50 dark:bg-gray-800 shadow-md py-4 px-4">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-gray-50 dark:bg-gray-900 shadow-md py-4 px-4">
             <ul className="flex flex-col space-y-4">
               {sections.map((section) => (
                 <li key={section.id} className="relative">
@@ -186,8 +187,8 @@ export default function Home() {
                       e.preventDefault();
                       scrollToSection(section.id);
                     }}
-                    className={`text-lg cursor-pointer hover:text-teal-600 transition-colors ${
-                      activeSection === section.id ? "text-teal-600" : ""
+                    className={`text-lg cursor-pointer hover:text-teal-400 transition-colors ${
+                      activeSection === section.id ? "text-teal-400" : "text-gray-800 dark:text-gray-100"
                     }`}
                   >
                     {section.name}
@@ -199,40 +200,39 @@ export default function Home() {
         )}
       </nav>
 
-      <main className="bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 pt-20 sm:pt-24" id="home">
+      <main className="bg-white dark:bg-gray-900 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 pt-20 sm:pt-24" id="home">
         <section className="min-h-screen">
           <div className="text-center p-6 sm:p-10">
-          <div className="mx-auto bg-gradient-to-b mb-5 from-teal-500 rounded-full w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 relative overflow-hidden mt-10 sm:mt-20">
+            <div className="mx-auto bg-gradient-to-b mb-5 from-teal-500 rounded-full w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 relative overflow-hidden mt-10 sm:mt-20">
               <Image src={profilePic} layout="fill" objectFit="cover" />
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl py-2 text-teal-600 font-medium dark:text-teal-400">
               Hazzy M
             </h2>
-            <h3 className="text-xl sm:text-2xl md:text-3xl py-2 dark:text-white">
+            <h3 className="text-xl sm:text-2xl md:text-3xl py-2 text-gray-800 dark:text-white">
               Senior Data Solution Architect
             </h3>
-            <p className="text-sm sm:text-md md:text-xl py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto">
+            <p className="text-sm sm:text-md md:text-xl py-5 leading-8 text-gray-800 dark:text-gray-100 max-w-xl mx-auto">
               I design, develop, and optimize scalable data solutions across cloud platforms using cutting-edge tech like Spark, Kafka, Databricks, and more.
             </p>
-            <div className="text-4xl sm:text-5xl flex justify-center gap-8 sm:gap-16 py-3 text-gray-600 dark:text-gray-400">
+            <div className="text-4xl sm:text-5xl flex justify-center gap-8 sm:gap-16 py-3 text-gray-600 dark:text-gray-300">
               <a href="https://www.linkedin.com/in/hazzy-m-dummy" target="_blank" rel="noopener noreferrer">
-                <AiFillLinkedin className="hover:text-teal-600 transition-colors cursor-pointer" />
+                <AiFillLinkedin className="hover:text-teal-400 transition-colors cursor-pointer" />
               </a>
               <a href="https://github.com/hazzy-m-dummy" target="_blank" rel="noopener noreferrer">
-                <AiFillGithub className="hover:text-teal-600 transition-colors cursor-pointer" />
+                <AiFillGithub className="hover:text-teal-400 transition-colors cursor-pointer" />
               </a>
               <a href="mailto:hazzymcoder@gmail.com">
-                <AiOutlineMail className="hover:text-teal-600 transition-colors cursor-pointer" />
+                <AiOutlineMail className="hover:text-teal-400 transition-colors cursor-pointer" />
               </a>
             </div>
-            
           </div>
         </section>
 
         {/* SUMMARY SECTION */}
         <section id="summary" className="py-10">
-          <h3 className="text-2xl sm:text-3xl py-1 dark:text-white">Summary</h3>
-          <p className="text-sm sm:text-md md:text-lg py-2 leading-8 text-gray-800 dark:text-gray-200">
+          <h3 className="text-2xl sm:text-3xl py-1 text-gray-800 dark:text-white">Summary</h3>
+          <p className="text-sm sm:text-md md:text-lg py-2 leading-8 text-gray-800 dark:text-gray-100">
             Results-driven Senior Data Solution Architect with over 11 years of experience in designing, developing, and optimizing scalable data solutions. Expertise in ETL pipelines, big data processing, and cloud-based architectures, utilizing Talend, Apache NiFi, Apache Airflow, and Informatica. Specialized in data warehousing methodologies (Star Schema, Snowflake Schema, Data Vault) and cloud platforms (AWS, Azure, GCP). Proficient in big data technologies such as Hadoop, Spark, Kafka, and HDFS, with a strong focus on real-time data streaming and distributed systems architecture.
           </p>
         </section>
@@ -240,32 +240,32 @@ export default function Home() {
         {/* SERVICES SECTION */}
         <section id="services">
           <div>
-            <h3 className="text-2xl sm:text-3xl py-1 dark:text-white">Services I Offer</h3>
-            <p className="text-sm sm:text-md md:text-lg py-2 leading-8 text-gray-800 dark:text-gray-200">
+            <h3 className="text-2xl sm:text-3xl py-1 text-gray-800 dark:text-white">Services I Offer</h3>
+            <p className="text-sm sm:text-md md:text-lg py-2 leading-8 text-gray-800 dark:text-gray-100">
               With over 11 years in the industry, I specialize in:
             </p>
           </div>
           <div className="lg:flex gap-6 sm:gap-10">
             <div className="text-center shadow-lg p-6 sm:p-10 rounded-xl my-6 sm:my-10 bg-white dark:bg-gray-800 flex-1 hover:bg-teal-500 dark:hover:bg-teal-400 transition-all duration-300 group">
               <h3 className="text-lg sm:text-xl font-bold pt-6 sm:pt-8 pb-2 text-gray-900 dark:text-white group-hover:text-white dark:group-hover:text-black">Data Architecture & Engineering</h3>
-              <p className="py-2 text-sm sm:text-base text-gray-700 dark:text-gray-200 group-hover:text-white dark:group-hover:text-black">Enterprise-grade architectures across AWS, Azure, and GCP.</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">ETL / ELT Development</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Data Lake & Lakehouse Solutions</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Cloud Migrations</p>
+              <p className="py-2 text-sm sm:text-base text-gray-700 dark:text-gray-100 group-hover:text-white dark:group-hover:text-black">Enterprise-grade architectures across AWS, Azure, and GCP.</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">ETL / ELT Development</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Data Lake & Lakehouse Solutions</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Cloud Migrations</p>
             </div>
             <div className="text-center shadow-lg p-6 sm:p-10 rounded-xl my-6 sm:my-10 bg-white dark:bg-gray-800 flex-1 hover:bg-teal-500 dark:hover:bg-teal-400 transition-all duration-300 group">
               <h3 className="text-lg sm:text-xl font-bold pt-6 sm:pt-8 pb-2 text-gray-900 dark:text-white group-hover:text-white dark:group-hover:text-black">Big Data & Streaming</h3>
-              <p className="py-2 text-sm sm:text-base text-gray-700 dark:text-gray-200 group-hover:text-white dark:group-hover:text-black">Real-time data streaming, big data processing, and batch pipelines.</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Apache Kafka, Spark, Flink</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Hadoop Ecosystem</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Data Warehousing</p>
+              <p className="py-2 text-sm sm:text-base text-gray-700 dark:text-gray-100 group-hover:text-white dark:group-hover:text-black">Real-time data streaming, big data processing, and batch pipelines.</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Apache Kafka, Spark, Flink</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Hadoop Ecosystem</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Data Warehousing</p>
             </div>
             <div className="text-center shadow-lg p-6 sm:p-10 rounded-xl my-6 sm:my-10 bg-white dark:bg-gray-800 flex-1 hover:bg-teal-500 dark:hover:bg-teal-400 transition-all duration-300 group">
               <h3 className="text-lg sm:text-xl font-bold pt-6 sm:pt-8 pb-2 text-gray-900 dark:text-white group-hover:text-white dark:group-hover:text-black">ML & Visualization</h3>
-              <p className="py-2 text-sm sm:text-base text-gray-700 dark:text-gray-200 group-hover:text-white dark:group-hover:text-black">Seamless ML integration and business intelligence solutions.</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">TensorFlow, PyTorch, Sklearn</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Tableau, Power BI, QuickSight</p>
-              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 py-1 group-hover:text-white dark:group-hover:text-black">Databricks</p>
+              <p className="py-2 text-sm sm:text-base text-gray-700 dark:text-gray-100 group-hover:text-white dark:group-hover:text-black">Seamless ML integration and business intelligence solutions.</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">TensorFlow, PyTorch, Sklearn</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Tableau, Power BI, QuickSight</p>
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 py-1 group-hover:text-white dark:group-hover:text-black">Databricks</p>
             </div>
           </div>
         </section>
@@ -273,8 +273,8 @@ export default function Home() {
         {/* TOOLS & TECHNOLOGIES SECTION */}
         <section id="tools" className="py-10">
           <div>
-            <h3 className="text-2xl sm:text-3xl py-1 dark:text-white">Tools & Technologies</h3>
-            <p className="text-sm sm:text-md md:text-lg py-2 leading-8 text-gray-800 dark:text-gray-200">
+            <h3 className="text-2xl sm:text-3xl py-1 text-gray-800 dark:text-white">Tools & Technologies</h3>
+            <p className="text-sm sm:text-md md:text-lg py-2 leading-8 text-gray-800 dark:text-gray-100">
               Proficient in a wide range of tools and technologies for data engineering, machine learning, and cloud solutions:
             </p>
           </div>
@@ -284,10 +284,10 @@ export default function Home() {
                 key={index}
                 className="flex flex-col items-center shadow-lg p-4 sm:p-6 rounded-xl bg-white dark:bg-gray-800 hover:bg-teal-500 dark:hover:bg-teal-400 transition-all duration-300 group hover:scale-105"
               >
-                <div className="mb-4 text-gray-800 dark:text-gray-200 group-hover:text-white dark:group-hover:text-black">
+                <div className="mb-4 text-gray-800 dark:text-gray-100 group-hover:text-white dark:group-hover:text-black">
                   {tool.icon}
                 </div>
-                <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 group-hover:text-white dark:group-hover:text-black font-medium">
+                <p className="text-sm sm:text-base text-gray-800 dark:text-gray-100 group-hover:text-white dark:group-hover:text-black font-medium">
                   {tool.name}
                 </p>
               </div>
@@ -297,12 +297,12 @@ export default function Home() {
 
         {/* EXPERIENCE SECTION */}
         <section id="experience" className="py-10">
-          <h3 className="text-2xl sm:text-3xl py-1 dark:text-white">Experience</h3>
+          <h3 className="text-2xl sm:text-3xl py-1 text-gray-800 dark:text-white">Experience</h3>
           <div className="space-y-6 sm:space-y-8">
             <div className="border-l-4 border-teal-500 pl-4 sm:pl-6 pb-6">
-              <h4 className="text-lg sm:text-xl font-medium dark:text-white">Data Solution Architect - ApTask</h4>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">April 2021 - Present</p>
-              <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-200">
+              <h4 className="text-lg sm:text-xl font-medium text-gray-800 dark:text-white">Data Solution Architect - ApTask</h4>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">April 2021 - Present</p>
+              <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-100">
                 <li>Designed and implemented enterprise-level data architectures across cloud platforms</li>
                 <li>Developed ETL pipelines using Talend, Apache Airflow, and Informatica</li>
                 <li>Led migration of on-premises data warehouses to AWS, Azure, and GCP</li>
@@ -311,9 +311,9 @@ export default function Home() {
               </ul>
             </div>
             <div className="border-l-4 border-teal-500 pl-4 sm:pl-6 pb-6">
-              <h4 className="text-lg sm:text-xl font-medium dark:text-white">Senior Data Engineer - Petra Power</h4>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">July 2017 - March 2021</p>
-              <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-200">
+              <h4 className="text-lg sm:text-xl font-medium text-gray-800 dark:text-white">Senior Data Engineer - Petra Power</h4>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">July 2017 - March 2021</p>
+              <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-100">
                 <li>Developed large-scale data pipelines using Hadoop, Spark, and Kafka</li>
                 <li>Designed distributed storage solutions using HDFS and Amazon S3</li>
                 <li>Automated ETL workflows with Apache NiFi and Airflow</li>
@@ -322,9 +322,9 @@ export default function Home() {
               </ul>
             </div>
             <div className="border-l-4 border-teal-500 pl-4 sm:pl-6 pb-6">
-              <h4 className="text-lg sm:text-xl font-medium dark:text-white">ETL & Data Warehouse Engineer - ProCogia</h4>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">February 2014 - June 2017</p>
-              <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-200">
+              <h4 className="text-lg sm:text-xl font-medium text-gray-800 dark:text-white">ETL & Data Warehouse Engineer - ProCogia</h4>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">February 2014 - June 2017</p>
+              <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-100">
                 <li>Designed and maintained ETL pipelines using Talend and SSIS</li>
                 <li>Architected data warehouse solutions using dimensional modeling</li>
                 <li>Developed real-time data integration for healthcare analytics</li>
@@ -337,8 +337,8 @@ export default function Home() {
 
         {/* CERTIFICATIONS SECTION */}
         <section id="certifications" className="py-10">
-          <h3 className="text-2xl sm:text-3xl py-1 dark:text-white">Certifications</h3>
-          <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-200">
+          <h3 className="text-2xl sm:text-3xl py-1 text-gray-800 dark:text-white">Certifications</h3>
+          <ul className="list-disc list-inside text-sm sm:text-md md:text-lg leading-8 text-gray-800 dark:text-gray-100">
             <li>AWS Certified Data Analytics - Specialty</li>
             <li>Google Professional Data Engineer</li>
           </ul>
@@ -346,17 +346,17 @@ export default function Home() {
 
         {/* EDUCATION SECTION */}
         <section id="education" className="py-10">
-          <h3 className="text-2xl sm:text-3xl py-1 dark:text-white">Education</h3>
+          <h3 className="text-2xl sm:text-3xl py-1 text-gray-800 dark:text-white">Education</h3>
           <div className="border-l-4 border-teal-500 pl-4 sm:pl-6">
-            <h4 className="text-lg sm:text-xl font-medium dark:text-white">Bachelor of Science, Computer Science</h4>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">New Jersey College of Engineering & Technology</p>
+            <h4 className="text-lg sm:text-xl font-medium text-gray-800 dark:text-white">Bachelor of Science, Computer Science</h4>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">New Jersey College of Engineering & Technology</p>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 dark:bg-gray-800 py-4 sm:py-6 text-center">
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+      <footer className="bg-gray-50 dark:bg-gray-900 py-4 sm:py-6 text-center">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
           © 2025 Hazzy M. All rights reserved.
         </p>
       </footer>
