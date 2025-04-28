@@ -4,6 +4,7 @@ import { BsFillMoonStarsFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 // import profilePic from "../public/dev-ed-wave.png"; 
+// ok
 import profilePic from "../public/profile_image.png"; 
 import { FaBars, FaTimes } from "react-icons/fa"; 
 
