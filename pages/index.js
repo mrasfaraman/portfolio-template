@@ -402,7 +402,7 @@ export default function Home() {
             </div>
             <div className="border-l-4 border-teal-500 pl-4 sm:pl-6 pb-6">
               <h4 className="text-lg sm:text-xl font-medium text-gray-800 dark:text-white">
-                DevOps Cloud Infrastructure Engineer - Twilio
+                DevOps Cloud Infrastructure Engineer - Mindtree
               </h4>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                 August 2016 - April 2019
